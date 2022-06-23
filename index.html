@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <link rel="shortcut icon" type="image/png" href="assets/favicon.png">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="utf-8">
+    <script src="scripts/sketch.js"></script>
+    <script src="scripts/jslib.js"></script>
+    <script src="scripts/level.js"></script>
+    <script src="scripts/file_handler.js"></script>
+    <script src="scripts/input_handler.js"></script>
+    <script src="scripts/object_selector.js"></script>
+    <script src="scripts/wire.js"></script>
+    <script src="scripts/wire_connector.js"></script>
+    <script src="scripts/pathfinding.js"></script>
+    <script src="scripts/path.js"></script>
+    <script src="scripts/vertex.js"></script>
+    <script src="scripts/edge.js"></script>
+    <script src="scripts/world.js"></script>
+    <script src="scripts/path_visualizer.js"></script>
+    <script>
+    document.oncontextmenu = function() {
+        return false;
+    }
+    </script>
+    <script>
+    window.addEventListener('keydown', (e) => {
+        if (e.keyCode === 32 && e.target === document.body) {
+            e.preventDefault();
+        }
+    });
+    </script>
+    <title>Pathfinding with levers and doors</title>
+</head>
+
+<body>
+    <h1 style="font-size:90px">Pathfinding with levers and doors</h1>
+    <div>
+        <h1 style="font-size:70px">About project</h1>
+        <div style="margin-left: 100px;max-width: 2500px">
+            <p>
+                The project is all about pathfinding. It includes a custom level editor where you can make your own level and use the program to calculate the shortest path between 2 points. All pathfinding algorithm must contain some passable titles and an object that limits the virtual character movement. Besides that, I have some extra titles in my project to be more interesting. There is a door which can have 2 states: open and close. The player can pass through it when it’s open and it is an obstacle when it is closed. The doors can’t be controlled manually. The only way to open the door is to use a lever. This still sounds boring, doesn’t it? So, I added wires to create circuits with and logic gates to control how each door can be opened. This might feel overwhelming at the first look, but don’t worry! I have created a template map which will make sense to everything described above! You can download it by clicking on the button below.
+            </p>
+        </div>
+        <div style="margin-left: 100px;margin-bottom: 40px;margin-top: 40px">
+            <button id="download_template_level" class="button"> Download template level </button>
+        </div>
+        <div style="margin-left: 100px;max-width: 2500px">
+            <p>
+                You can import a level by simply drag and drop the file to the level grid. If you have imported a template level, click on the “Calculate the shortest path” button. Whenever the little guy is visible on the starting tile, you can start the simulation. By pressing the button SPACE you can walk through the simulation step-by-step. The character will complete the level the shortest way possible while interacting with the environment. Once it arrived to the destination tile, press the button SPACE once again to reset the level to its original state. If you want to cancel the simulation earlier, click on the “Cancel visualization” button.
+                <br>
+                <br>
+                In the next section there is a detailed description how to use the editor.
+            </p>
+        </div>
+        <div style="margin-left: 100px;margin-top: 150px;max-width: 2500px">
+            <p style="color:red"><b>Important notes</b></p>
+            <ul>
+                <li>You can't import/export level when simulation is active</li>
+                <li>Importing a level will override your currently edited level, so use it carefully</li>
+                <li>You can't create loops in circuit</li>
+                <li>Due to the complexity of pathfinding algorihtm it is not recommended to use more then 8-9 lever in single level. (But it depends from the structure of the level too, so it's possible to create level with more lever and acceptable calculation time)</li>
+                <li>Before clicking on "Calculate the shortest path" it's recommended to export your level</li>
+            </ul>
+        </div>
+    </div>
+    <div>
+        <h1 style="font-size:70px">Level editor</h1>
+        <div style="margin-left: 100px;max-width: 2500px">
+            <img src="assets/bulldozer.png" class="lvl_editor_icon">
+            <div style="display:inline-block;">
+                <p style="vertical-align : middle"> <b>Bulldozer</b> - Remove the Wall with left click and everything else with right click.</p>
+            </div>
+            <br>
+            <img src="assets/wall.png" class="lvl_editor_icon">
+            <div style="display:inline-block;">
+                <p style="vertical-align : middle"> <b>Wall</b> - Can't be passed. Used for pathfinding purposes.</p>
+            </div>
+            <br>
+            <img src="assets/door_closed.png" class="lvl_editor_icon">
+            <div style="display:inline-block;">
+                <p style="vertical-align : middle"> <b>Door</b> - Can be activated by single cable. If it activated, it will become opened. Can only be endpoint.</p>
+            </div>
+            <br>
+            <img src="assets/lever_off.png" class="lvl_editor_icon">
+            <div style="display:inline-block;">
+                <p style="vertical-align : middle"> <b>Lever</b> - Left-click to activate it, right click to make a connection with the logic gate or with a door. Can only be starting point.</p>
+            </div>
+            <br>
+            <img src="assets/and_gate.png" class="lvl_editor_icon">
+            <img src="assets/or_gate.png" class="lvl_editor_icon">
+            <img src="assets/not_gate.png" class="lvl_editor_icon">
+            <div style="display:inline-block;">
+                <p style="vertical-align : middle"> <b>Logic gates</b> - Right click on the gate to connect it to a door or to an another logic gate.</p>
+            </div>
+            <br>
+            <img src="assets/start.png" class="lvl_editor_icon">
+            <img src="assets/end.png" class="lvl_editor_icon">
+            <div style="display:inline-block;">
+                <p style="vertical-align : middle"> <b>Start/Finish point</b> - Indicates start and finish points in pathfinding. Can't be removed.</p>
+            </div>
+        </div>
+        <div style="margin-left: 100px;margin-top: 200px;margin-bottom: 100px;max-width: 2500px">
+            <p> <b>Select an object:</b> </p>
+            <ul>
+                <li>To select an object you can either click on the icons on the top left corner or select them by pressing the buttons from 1-9</li>
+            </ul>
+            <p> <b>Demolish objects:</b> </p>
+            <ul>
+                <li>Left-click to remove Wall</li>
+                <li>Right-click to remove every object except the Wall</li>
+            </ul>
+            <p> <b><b>Deselect an object:</b></b> </p>
+            <ul>
+                <li>Press "D" to deselect the current object</li>
+            </ul>
+            <p> <b>Interacting with object:</b> </p>
+            <ul>
+                <li>The current objects must be deselected before connection or lever activation can be initialised</li>
+            </ul>
+            <p> <b>Connecting objects:</b> </p>
+            <ul>
+                <li>Connect the lever to a door or to a logic gate by clicking on both ends with right-click starting with the lever</li>
+                <li>Connect the logic gate to an another logic gate or to a door by clicking on both ends with right-click starting with the first logic gate</li>
+            </ul>
+            <p> <b>Remove connections:</b> </p>
+            <ul>
+                <li>Right click both objects starting with the original starting point</li>
+            </ul>
+        </div>
+        <div style="margin-bottom: 40px;margin-top: 40px">
+            <button id="export" class="button"> Export </button>
+        </div>
+        <div style="margin-bottom: 40px;margin-top: 40px">
+            <button id="bulldozer"><img src="assets/bulldozer.png" class="tile_select_icon">1</button>
+            <button id="building_0"><img src="assets/wall.png" class="tile_select_icon">2</button>
+            <button id="building_1"><img src="assets/door_closed.png" class="tile_select_icon">3</button>
+            <button id="building_2"><img src="assets/lever_off.png" class="tile_select_icon">4</button>
+            <button id="building_3"><img src="assets/and_gate.png" class="tile_select_icon">5</button>
+            <button id="building_4"><img src="assets/or_gate.png" class="tile_select_icon">6</button>
+            <button id="building_5"><img src="assets/not_gate.png" class="tile_select_icon">7</button>
+            <button id="start"><img src="assets/start.png" class="tile_select_icon">8</button>
+            <button id="end"><img src="assets/end.png" class="tile_select_icon">9</button>
+        </div>
+    </div>
+    <div id="canvasp"></div>
+    <div style="margin-top: 40px">
+        <button id="calculate_the_shortest_path" class="button"> Calculate the shortest path </button>
+        <button id="cancel_visualization" class="button"> Cancel visualization </button>
+    </div>
+</body>
+
+</html>
