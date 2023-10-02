@@ -1,0 +1,47 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    background-color: lightgray;
+    background-size: cover;
+}
+
+input[type=checkbox] {
+    padding: 16px 16px;
+    appearance: none;
+    outline: 0.1em solid black;
+    outline-offset: 0.1em;
+    vertical-align: middle;
+}
+
+input[type=checkbox]:checked {
+    background-color: #04466D;
+}
+
+.button {
+    border: 2px solid #04466D;
+    background-color: lightgray;
+    padding: 14px 28px;
+    cursor: pointer;
+    color: #04466D;
+    border-radius: 5px;
+    font-size: 26px;
+}
+
+.button:hover {
+    background-color: #04466D;
+    color: white;
+}
+
+p {
+    font-size: 26px;
+}
+
+li {
+    font-size: 26px;
+}
+
+ul {
+    list-style-type: square;
+}

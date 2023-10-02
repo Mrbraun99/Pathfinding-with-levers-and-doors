@@ -1,0 +1,886 @@
+{
+  "tiles": [
+    [
+      "GRASS",
+      "GRASS",
+      "LEVER",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "WALL",
+      "GRASS",
+      "LEVER",
+      "NOT_GATE",
+      "GRASS",
+      "GRASS",
+      "WALL",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "WALL",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS"
+    ],
+    [
+      "GRASS",
+      "GRASS",
+      "LEVER",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "WALL",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "WALL",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "WALL",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS"
+    ],
+    [
+      "START_POINT",
+      "GRASS",
+      "LEVER",
+      "NOT_GATE",
+      "GRASS",
+      "AND_GATE",
+      "DOOR",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "DOOR",
+      "GRASS",
+      "LEVER",
+      "GRASS",
+      "WALL",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS"
+    ],
+    [
+      "GRASS",
+      "GRASS",
+      "LEVER",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "WALL",
+      "GRASS",
+      "AND_GATE",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "WALL",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "WALL",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS"
+    ],
+    [
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "WALL",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "WALL",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "WALL",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS"
+    ],
+    [
+      "WALL",
+      "WALL",
+      "GRASS",
+      "WALL",
+      "WALL",
+      "WALL",
+      "WALL",
+      "WALL",
+      "WALL",
+      "DOOR",
+      "WALL",
+      "WALL",
+      "WALL",
+      "WALL",
+      "WALL",
+      "WALL",
+      "WALL",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS"
+    ],
+    [
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "NOT_GATE",
+      "GRASS",
+      "GRASS",
+      "WALL",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "WALL",
+      "GRASS",
+      "FINISH_POINT",
+      "GRASS",
+      "WALL",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS"
+    ],
+    [
+      "GRASS",
+      "LEVER",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "WALL",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "WALL",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "WALL",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS"
+    ],
+    [
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "OR_GATE",
+      "WALL",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "WALL",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "WALL",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS"
+    ],
+    [
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "WALL",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "DOOR",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "WALL",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS"
+    ],
+    [
+      "GRASS",
+      "LEVER",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "WALL",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "WALL",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "WALL",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS"
+    ],
+    [
+      "WALL",
+      "WALL",
+      "WALL",
+      "WALL",
+      "WALL",
+      "WALL",
+      "WALL",
+      "WALL",
+      "WALL",
+      "WALL",
+      "WALL",
+      "WALL",
+      "WALL",
+      "WALL",
+      "WALL",
+      "WALL",
+      "WALL",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS"
+    ],
+    [
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS"
+    ],
+    [
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS"
+    ],
+    [
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS"
+    ],
+    [
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS"
+    ],
+    [
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS"
+    ],
+    [
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS"
+    ],
+    [
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS"
+    ],
+    [
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS"
+    ],
+    [
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS"
+    ],
+    [
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS"
+    ],
+    [
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS"
+    ],
+    [
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS",
+      "GRASS"
+    ]
+  ],
+  "circuit": {
+    "data": {
+      "elements": {
+        "2,0": {
+          "tile": "LEVER",
+          "state": 0
+        },
+        "2,1": {
+          "tile": "LEVER",
+          "state": 0
+        },
+        "2,2": {
+          "tile": "LEVER",
+          "state": 0
+        },
+        "2,3": {
+          "tile": "LEVER",
+          "state": 0
+        },
+        "3,2": {
+          "tile": "NOT_GATE"
+        },
+        "5,2": {
+          "tile": "AND_GATE"
+        },
+        "6,2": {
+          "tile": "DOOR",
+          "state": 0
+        },
+        "3,6": {
+          "tile": "NOT_GATE"
+        },
+        "1,7": {
+          "tile": "LEVER",
+          "state": 1
+        },
+        "1,10": {
+          "tile": "LEVER",
+          "state": 0
+        },
+        "5,8": {
+          "tile": "OR_GATE"
+        },
+        "12,9": {
+          "tile": "DOOR",
+          "state": 1
+        },
+        "9,5": {
+          "tile": "DOOR",
+          "state": 0
+        },
+        "12,2": {
+          "tile": "DOOR",
+          "state": 0
+        },
+        "8,0": {
+          "tile": "LEVER",
+          "state": 0
+        },
+        "14,2": {
+          "tile": "LEVER",
+          "state": 0
+        },
+        "8,3": {
+          "tile": "AND_GATE"
+        },
+        "9,0": {
+          "tile": "NOT_GATE"
+        }
+      },
+      "wires": [
+        {
+          "src": {
+            "x": 2,
+            "y": 3
+          },
+          "dst": {
+            "x": 5,
+            "y": 2
+          },
+          "state": 0
+        },
+        {
+          "src": {
+            "x": 2,
+            "y": 2
+          },
+          "dst": {
+            "x": 3,
+            "y": 2
+          },
+          "state": 0
+        },
+        {
+          "src": {
+            "x": 3,
+            "y": 2
+          },
+          "dst": {
+            "x": 5,
+            "y": 2
+          },
+          "state": 1
+        },
+        {
+          "src": {
+            "x": 2,
+            "y": 1
+          },
+          "dst": {
+            "x": 5,
+            "y": 2
+          },
+          "state": 0
+        },
+        {
+          "src": {
+            "x": 2,
+            "y": 0
+          },
+          "dst": {
+            "x": 5,
+            "y": 2
+          },
+          "state": 0
+        },
+        {
+          "src": {
+            "x": 5,
+            "y": 2
+          },
+          "dst": {
+            "x": 6,
+            "y": 2
+          },
+          "state": 0
+        },
+        {
+          "src": {
+            "x": 1,
+            "y": 7
+          },
+          "dst": {
+            "x": 3,
+            "y": 6
+          },
+          "state": 1
+        },
+        {
+          "src": {
+            "x": 3,
+            "y": 6
+          },
+          "dst": {
+            "x": 5,
+            "y": 2
+          },
+          "state": 0
+        },
+        {
+          "src": {
+            "x": 1,
+            "y": 7
+          },
+          "dst": {
+            "x": 5,
+            "y": 8
+          },
+          "state": 1
+        },
+        {
+          "src": {
+            "x": 1,
+            "y": 10
+          },
+          "dst": {
+            "x": 5,
+            "y": 8
+          },
+          "state": 0
+        },
+        {
+          "src": {
+            "x": 5,
+            "y": 8
+          },
+          "dst": {
+            "x": 12,
+            "y": 9
+          },
+          "state": 1
+        },
+        {
+          "src": {
+            "x": 8,
+            "y": 0
+          },
+          "dst": {
+            "x": 9,
+            "y": 0
+          },
+          "state": 0
+        },
+        {
+          "src": {
+            "x": 8,
+            "y": 0
+          },
+          "dst": {
+            "x": 12,
+            "y": 2
+          },
+          "state": 0
+        },
+        {
+          "src": {
+            "x": 9,
+            "y": 0
+          },
+          "dst": {
+            "x": 8,
+            "y": 3
+          },
+          "state": 1
+        },
+        {
+          "src": {
+            "x": 8,
+            "y": 3
+          },
+          "dst": {
+            "x": 9,
+            "y": 5
+          },
+          "state": 0
+        },
+        {
+          "src": {
+            "x": 14,
+            "y": 2
+          },
+          "dst": {
+            "x": 8,
+            "y": 3
+          },
+          "state": 0
+        }
+      ]
+    }
+  },
+  "srcPoint": {
+    "x": 0,
+    "y": 2
+  },
+  "dstPoint": {
+    "x": 14,
+    "y": 6
+  }
+}

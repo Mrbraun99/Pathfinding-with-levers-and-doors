@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.js"></script>
+    <link rel="shortcut icon" type="image/png" href="assets/favicon.png">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="utf-8">
+    <script src="scripts/main.js"></script>
+    <script src="scripts/level_editor.js"></script>
+    <script src="scripts/circuit.js"></script>
+    <script src="scripts/wire_conector.js"></script>
+    <script src="scripts/tile_selector.js"></script>
+    <script src="scripts/graph.js"></script>
+    <script src="scripts/movement_graph.js"></script>
+    <script src="scripts/simplified_graph.js"></script>
+    <script src="scripts/world.js"></script>
+    <script src="scripts/pathfinder.js"></script>
+    <script src="scripts/route_visualizer.js"></script>
+    <script>
+        document.oncontextmenu = function () {
+            return false;
+        }
+
+        window.addEventListener('keypress', (event) => {
+            if (event.code == "Space") event.preventDefault();
+        });
+    </script>
+
+    <title>Pathfinding with levers and doors</title>
+</head>
+
+<body style="margin-left: 20px;max-width: 1500px">
+    <h1 style="font-size:70px">Pathfinding with levers and doors</h1>
+
+    <h1 style="font-size:45px">About project</h1>
+    <div style="margin-left: 40px;max-width: 1500px">
+        <p>
+            The project is all about pathfinding. It includes a custom level editor where you can make your own level
+            and use the program to calculate the shortest path between 2 points. All pathfinding algorithm must contain
+            some passable tiles and an object that limits the virtual character movement. Besides that, I have some
+            extra tiles in my project to be more interesting. There is a door which can have 2 states: <b>open</b> and
+            <b>close</b>. The player can pass through it when it’s open and it is an obstacle when it is closed. The
+            doors can’t be controlled manually. The only way to open the door is to use a lever. This still sounds
+            boring, doesn’t it? So, I added wires to create circuits with logic gates to control how each door can
+            be opened. This might feel overwhelming at the first look, but don’t worry! I have created a template map
+            which will make sense to everything described above! You can download it by clicking on the button below.
+        </p>
+        <div style="margin-bottom: 40px;margin-top: 40px">
+            <button id="download-template-level" class="button"> Download template level </button>
+        </div>
+        <p>
+            You can import a level by simply drag and drop the file to the level grid. If you have imported a template
+            level, press ENTER to calculate the shortest path. Whenever the little guy is visible on the starting
+            tile it will complete the level the shortest way possible while interacting with the environment. If you
+            want you can control the simulation manually. Unchecking the following checkbox will disable the automatic
+            play mode.
+            <br> <br>
+            <b>Automatic animation: </b> <input type="checkbox" id="auto-visualizing" checked />
+            <br> <br>
+            By pressing the SPACE button you can walk through the simulation step-by-step. Once it arrived to the
+            destination tile, press the SPACE once again to reset the level to its original state. If you want to
+            cancel the simulation earlier, click on the “Cancel visualization” button at the bottom of the page.
+        </p>
+        <p style="color:red"><b>Important notes</b></p>
+        <ul>
+            <li> You can't import/export level when simulation is active. </li>
+            <li> Importing a level will override your currently edited level, so use it carefully. </li>
+            <li> You can't create loops in circuit. </li>
+            <li> Due to the complexity of pathfinding algorihtm it is not recommended to use more then 8-9 lever in single level. (But it depends from the structure of the level too, so it's possible to create level with more lever and acceptable calculation time.) </li>
+            <li> Before pressing ENTER it's recommended to export your level. </li>
+        </ul>
+    </div>
+
+    <h1 style="font-size:45px">Level editor</h1>
+    <div style="margin-left: 40px;max-width: 1500px">
+        <p><b>Building/ Deletion</b></p>
+        <ul>
+            <li> To build select the icon of the desired object from the upper left corner or use the buttons from 2-9. After this hold left mouse button to build. </li>
+            <li> Use right mouse button to deselect object. </li>
+            <li> Select the bulldozer icon or press the number 1 and use left mouse button to delete objects. Start and finish tiles can not be removed. </li>
+        </ul>
+        <p><b>Circuit</b></p>
+        <ul>
+            <li> To create wires or interact with levers you have to exit from building mode (no object is selected). </li>
+            <li> Use left mouse button to toggle levers on and off. </li>
+            <li> Right click on circuit object to initialize a wire and connect (right click too) it to another circuit object. To interrupt the connection right click on non circuit object. Pay attention that door can not be source and lever can not be the destination. Each door and not gate can have only one input wire. </li>
+            <li> If you want to delete the connection create the wire by clicking on source and destination again. </li>
+        </ul>
+    </div>
+    <div style="margin-bottom: 20px;margin-top: 20px">
+        <button id="export-level" class="button"> Export </button>
+    </div>
+    <div style="margin-bottom: 40px;margin-top: 40px">
+        <button id="entity_1" style="height: 100px; width: 100px;"><img style="height: 60px; width: 60px;" src="assets/bulldozer.png"><span style="font-size: 24px;">1</span></button>
+        <button id="entity_2" style="height: 100px; width: 100px;"><img style="height: 60px; width: 60px;" src="assets/wall.png"><span style="font-size: 24px;">2</span></button>
+        <button id="entity_3" style="height: 100px; width: 100px;"><img style="height: 60px; width: 60px;" src="assets/lever_off.png"><span style="font-size: 24px;">3</span></button>
+        <button id="entity_4" style="height: 100px; width: 100px;"><img style="height: 60px; width: 60px;" src="assets/door_off.png"><span style="font-size: 24px;">4</span></button>
+        <button id="entity_5" style="height: 100px; width: 100px;"><img style="height: 60px; width: 60px;" src="assets/and_gate.png"><span style="font-size: 24px;">5</span></button>
+        <button id="entity_6" style="height: 100px; width: 100px;"><img style="height: 60px; width: 60px;" src="assets/or_gate.png"><span style="font-size: 24px;">6</span></button>
+        <button id="entity_7" style="height: 100px; width: 100px;"><img style="height: 60px; width: 60px;" src="assets/not_gate.png"><span style="font-size: 24px;">7</span></button>
+        <button id="entity_8" style="height: 100px; width: 100px;"><img style="height: 60px; width: 60px;" src="assets/start_point.png"><span style="font-size: 24px;">8</span></button>
+        <button id="entity_9" style="height: 100px; width: 100px;"><img style="height: 60px; width: 60px;" src="assets/finish_point.png"><span style="font-size: 24px;">9</span></button>
+    </div>
+    <div id="canvas-parent"></div>
+    <div style="margin-top: 20px">
+        <button id="cancel-visualization" class="button"> Cancel visualization </button>
+    </div>
+</body>
+
+</html>
