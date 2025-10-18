@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="shortcut icon" type="image/png" href="assets/favicon.png">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="utf-8">
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.2/lib/p5.min.js"></script>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/circuit.js"></script>
+    <script src="scripts/level.js"></script>
+    <script src="scripts/editor.js"></script>
+    <script src="scripts/state.js"></script>
+    <script src="scripts/min_heap.js"></script>
+    <script src="scripts/pathfinder.js"></script>
+    <script src="scripts/circuit_evaluator.js"></script>
+    <script src="scripts/world.js"></script>
+    <script src="scripts/route_visualizer.js"></script>
+    <script src="scripts/intersection.js"></script>
+    <script>
+        document.oncontextmenu = function () {
+            return false;
+        }
+
+        window.addEventListener('keypress', (event) => {
+            if (event.code == "Space") event.preventDefault();
+        });
+    </script>
+
+    <title>Pathfinding with levers and doors</title>
+</head>
+
+<body style="max-width: 1400px;">
+    <h1 style="font-size:60px">Pathfinding with levers and doors</h1>
+
+    <h1 style="font-size:35px">About project</h1>
+
+    <p>
+        This project explores the fascinating world of pathfinding. It includes a built-in level editor that lets you design your own maps and watch the algorithm calculate the shortest path between two points. Like any pathfinding system, it works with passable tiles and obstacles, but I wanted to go further. To make things more interesting, I’ve added doors that can be either open or closed. Closed doors act as barriers, and the only way to open them is by using levers. But you’re not limited to simple lever–door connections. Instead, you can design complex conditions for opening doors by wiring levers through logic gates, giving you full control over how the environment behaves. At first glance, this might seem a bit complex, but don’t worry! To help you get started, I’ve included a demo level that showcases all of these features. You can load it into the editor with just one click and see everything in action.
+    </p>
+
+    <button id="load_demo" class="button" style="font-size: 16px;"> Load demo </button>
+
+    <p>
+        Once you’ve loaded a demo level, just click on <b>Run pathfinding</b> below the canvas. The little character will appear on the starting tile and it will automatically find the shortest path to the goal by interacting with the environment along the way. By default, the solution animation plays automatically, but you can use the control buttons to pause, step forward/backward, or replay the path. When you’re done, click on <b>Cancel</b> to return to editor mode. One last tip before your level design journey begans: don’t forget to export your level before running the pathfinding algorithm.
+    </p>
+
+    <h1 style="font-size:35px">Editor</h1>
+
+    <p>
+        The level editor is designed to be simple and intuitive. You can build maps by selecting tiles from the toolbar and placing them directly onto the grid. Instead of clicking one tile at a time, you can click and drag to draw larger areas, making map creation much faster. Objects (except walls) can be moved easily by clicking and dragging them, making repositioning quick and easy without needing to delete and replace them. Wiring is handled with the right mouse button: right-click on a lever or logic gate to start a wire, then right-click again on another element to connect them. Wires can’t contain loops, so only combinational circuits are allowed. To toggle a lever’s state, simply left-click on it. The editor also includes an automatic logic gate rotation system to assist you with cable management, and to keep your circuits clean and organized. However, if you prefer a different orientation, the rotation tool is available in the toolbar, allowing you to adjust the gate’s orientation yourself. </p>
+
+    <div style="margin-top: 20px;margin-bottom: 20px;">
+        <div id="editor_tools" style="display: block;">
+            <button id="demolish_btn"> <img style="height: 50px; width: 50px;" src="assets/bulldozer.png" draggable="false"></button>
+            <button class="build_btn" data-tile="WALL"> <img style="height: 50px; width: 50px;" src="assets/wall.png" draggable="false"></button>
+            <button class="build_btn" data-tile="LEVER"> <img style="height: 50px; width: 50px;" src="assets/lever_off.png" draggable="false"></button>
+            <button class="build_btn" data-tile="DOOR"> <img style="height: 50px; width: 50px;" src="assets/door_off.png" draggable="false"></button>
+            <button class="build_btn" data-tile="AND_GATE"> <img style="height: 50px; width: 50px;" src="assets/and_gate.png" draggable="false"></button>
+            <button class="build_btn" data-tile="OR_GATE"> <img style="height: 50px; width: 50px;" src="assets/or_gate.png" draggable="false"></button>
+            <button class="build_btn" data-tile="NOT_GATE"> <img style="height: 50px; width: 50px;" src="assets/not_gate.png" draggable="false"></button>
+            <button class="build_btn" data-tile="START_POINT"> <img style="height: 50px; width: 50px;" src="assets/start_point.png" draggable="false"></button>
+            <button class="build_btn" data-tile="FINISH_POINT"> <img style="height: 50px; width: 50px;" src="assets/finish_point.png" draggable="false"></button>
+            <button id="rotate_btn" style="margin-left:30px"> <img style="height: 50px; width: 50px;" src="assets/rotation.png" draggable="false"></button>
+        </div>
+
+        <div id="animation_tools" style="display: none; align-items: center; gap: 5px">
+            <button id="step_b" class="button animation_tool_button">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                    <path d="M491 100.8C478.1 93.8 462.3 94.5 450 102.6L192 272.1L192 128C192 110.3 177.7 96 160 96C142.3 96 128 110.3 128 128L128 512C128 529.7 142.3 544 160 544C177.7 544 192 529.7 192 512L192 367.9L450 537.5C462.3 545.6 478 546.3 491 539.3C504 532.3 512 518.8 512 504.1L512 136.1C512 121.4 503.9 107.9 491 100.9z" />
+                </svg>
+            </button>
+
+            <button id="play" class="button animation_tool_button" style="display: none;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                    <path d="M187.2 100.9C174.8 94.1 159.8 94.4 147.6 101.6C135.4 108.8 128 121.9 128 136L128 504C128 518.1 135.5 531.2 147.6 538.4C159.7 545.6 174.8 545.9 187.2 539.1L523.2 355.1C536 348.1 544 334.6 544 320C544 305.4 536 291.9 523.2 284.9L187.2 100.9z" />
+                </svg>
+            </button>
+
+            <button id="stop" class="button animation_tool_button">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                    <path d="M176 96C149.5 96 128 117.5 128 144L128 496C128 522.5 149.5 544 176 544L240 544C266.5 544 288 522.5 288 496L288 144C288 117.5 266.5 96 240 96L176 96zM400 96C373.5 96 352 117.5 352 144L352 496C352 522.5 373.5 544 400 544L464 544C490.5 544 512 522.5 512 496L512 144C512 117.5 490.5 96 464 96L400 96z" />
+                </svg>
+            </button>
+
+            <button id="step_f" class="button animation_tool_button">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                    <path d="M149 100.8C161.9 93.8 177.7 94.5 190 102.6L448 272.1L448 128C448 110.3 462.3 96 480 96C497.7 96 512 110.3 512 128L512 512C512 529.7 497.7 544 480 544C462.3 544 448 529.7 448 512L448 367.9L190 537.5C177.7 545.6 162 546.3 149 539.3C136 532.3 128 518.7 128 504L128 136C128 121.3 136.1 107.8 149 100.8z" />
+                </svg>
+            </button>
+
+            <button id="replay" class="button animation_tool_button">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                    <path d="M88 256L232 256C241.7 256 250.5 250.2 254.2 241.2C257.9 232.2 255.9 221.9 249 215L202.3 168.3C277.6 109.7 386.6 115 455.8 184.2C530.8 259.2 530.8 380.7 455.8 455.7C380.8 530.7 259.3 530.7 184.3 455.7C174.1 445.5 165.3 434.4 157.9 422.7C148.4 407.8 128.6 403.4 113.7 412.9C98.8 422.4 94.4 442.2 103.9 457.1C113.7 472.7 125.4 487.5 139 501C239 601 401 601 501 501C601 401 601 239 501 139C406.8 44.7 257.3 39.3 156.7 122.8L105 71C98.1 64.2 87.8 62.1 78.8 65.8C69.8 69.5 64 78.3 64 88L64 232C64 245.3 74.7 256 88 256z" />
+                </svg>
+            </button>
+
+            <button id="cancel" class="button" style="font-size: 16px;"> Cancel </button>
+
+        </div>
+    </div>
+
+    <div id="canvas-parent" style="margin-top: 20px;margin-bottom: 20px;"></div>
+
+    <button id="export_level" class="button" style="font-size: 16px;"> Export </button>
+
+    <button id="solve_level" class="button" style="font-size: 16px;"> Run pathfinding </button>
+
+</body>
+
+</html>
